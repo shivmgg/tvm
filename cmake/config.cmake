@@ -235,6 +235,9 @@ set(USE_VITIS_AI OFF)
 # Build Verilator codegen and runtime, example located in 3rdparty/vta-hw/apps/verilator
 set(USE_VERILATOR_HW OFF)
 
+# Whether use NVDLA codegen
+set(USE_NVDLA_CODEGEN ON)
+
 # Build ANTLR parser for Relay text format
 # Possible values:
 # - ON: enable ANTLR by searching default locations (cmake find_program for antlr4 and /usr/local for jar)

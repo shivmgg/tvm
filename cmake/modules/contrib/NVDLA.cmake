@@ -14,13 +14,10 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-# pylint: disable=wildcard-import
-"""Contrib modules."""
-from .register import get_pattern_table, register_pattern_table
-
-from .arm_compute_lib import *
-from .dnnl import *
-from .coreml import *
-from .ethosn import *
-from .tensorrt import *
-from .nvdla import *
+if(USE_NVDLA_CODEGEN)
+    file(GLOB NVDLA_RELAY_CONTRIB_SRC src/relay/backend/contrib/nvdla/*.cc)
+    file(GLOB NVDLA_RUNTIME_MODULE src/runtime/contrib/nvdla/nvdla_runtime.cc)
+    list(APPEND COMPILER_SRCS ${NVDLA_RELAY_CONTRIB_SRC})
+    list(APPEND COMPILER_SRCS ${NVDLA_RUNTIME_MODULE})
+    message(STATUS "Build with NVDLA Codegen support...")
+endif()
