@@ -131,7 +131,7 @@ outp = dict()
 outp['shape'] = tvm_output.shape
 tvm_output = tvm_output.tolist()
 outp['value'] = tvm_output
-with open('/home/shivam/NUS/CS6280/tvm/examples/expected_output/expected_output_dense2.json', 'w') as outfile:
+with open('/path_to_tvm/tvm/examples/expected_output/expected_output.json', 'w') as outfile:
     outfile.write(json.dumps(outp, sort_keys=True, indent=2))
 print(tvm_output)
 
@@ -215,7 +215,7 @@ with tvm.transform.PassContext(opt_level=3, disabled_pass=["AlterOpLayout"]):
                 l[layer_name]['bias'] = res[layer_name].flatten().tolist()       
         iter = iter + 1
 
-    with open('/home/shivam/NUS/CS6280/tvm/examples/json/NVDLA_lenet.json', 'w') as outfile:
+    with open('/path_to_tvm/tvm/examples/json/NVDLA_lenet.json', 'w') as outfile:
         json.dump(l, outfile)
 
 
